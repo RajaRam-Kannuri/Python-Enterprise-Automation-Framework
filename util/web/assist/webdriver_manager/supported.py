@@ -1,0 +1,10 @@
+from typing import Final, Literal
+
+BrowserName = Literal["chrome", "chromium", "firefox", "ie", "edge", "opera"]
+
+chrome: Final[BrowserName] = "chrome"
+chromium: Final[BrowserName] = "chromium"
+firefox: Final[BrowserName] = "firefox"
+ie: Final[BrowserName] = "ie"
+edge: Final[BrowserName] = "edge"
+opera: Final[BrowserName] = "opera"

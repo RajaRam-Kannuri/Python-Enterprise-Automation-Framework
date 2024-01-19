@@ -1,0 +1,88 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+line_length = 120
+profile = "black"
+
+[tool.poetry]
+authors = ["Rajaram"]
+description = "Automated tests for Constructor platform"
+name = "platform-autotests"
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+allure-pytest = "^2.13.2"
+assertpy = "^1.1"
+beautifulsoup4 = "^4.12.2"
+bs4 = "^0.0.1"
+faker = "^19.3.0"
+pydantic = "^1.10.11"
+pytest = "^7.4.0"
+pytest-xdist = "^3.3.1"
+python = "^3.11"
+selene = "2.0.0rc4"
+selenium = "^4.13.0"
+waiting = "^1.4.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+flake8 = "^6.0.0"
+isort = "^5.12.0"
+pre-commit = "^3.3.3"
+
+[[tool.poetry.source]]
+name = "nexus"
+priority = "supplemental"
+url = "https://nexus.alemira.dev/repository/pypi/simple"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+markers = [
+  # common markers section:
+  "ui: marks tests as ui tests",
+  "api: marks tests as api tests",
+  # product markers section:
+  "assessment: marks tests for assessment",
+  "labs: marks tests for labs",
+  "lms: marks tests for lms",
+  "classroom: marks tests for classroom",
+  "avatar: marks tests for avatar",
+  # test types section:
+  "smokes: marks smoke tests that are allowed to be executed in the production environment",
+  "slow: marks tests with longer durations relative to other tests within specific services",
+  "wip: work in progress",
+  # labs markers section:
+  "workspace_configuration: marks tests for workspace configuration aka enviroment",
+  "virtual_lab: marks tests for virtual lab",
+  "coding_lab: marks tests for coding lab",
+  "images: marks tests for external images",
+  "create_copy: marks tests for lab's create and copy actions",
+  "languages: marks tests for virtual labs languages and translations",
+  "general: marks tests as virtual lab general tests",
+  "lab_session: marks tests as lab sessions tests",
+  "publish: marks tests for lab publishing/unpublishing tests",
+  "variables: marks tests for lab variables tests",
+  "subsequent_lab: marks tests for labs that are linked in sequence with a shared environment",
+  "lab_action: marks tests for lab session actions",
+  # lms markers section:
+  "content_libraries: marks tests for content libraries page",
+  "scorm: marks tests for scorm libraries"
+]
+testpaths = [
+  "tests"
+]
+
+[tool.ruff]
+line-length = 120
+per-file-ignores = {"by.py" = ["F403", "F405"], "commands.py" = ["F403", "F405"], "have.py" = ["F403", "F405"]}
+target-version = "py311"
